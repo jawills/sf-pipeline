@@ -4,23 +4,23 @@
     "homepage": "https://github.com/jawills/sf-pipeline",
     "items": [
       {
-        "name": "production-deploy",
+        "name": "ci-setup",
         "type": "registry:item",
         "title": "Production Deploy",
         "description": "Deploy changes from a PR to production.",
         "files": [
           {
-            "path": ".github/actions/incremental-deploy/action.yml",
+            "path": "ci-setup/incremental-deploy/action.yml",
             "type": "registry:file",
             "target": "~/.github/actions/incremental-deploy/action.yml"
           },
           {
-            "path": ".github/workflows/deploy-production.yml",
+            "path": "ci-setup/deploy-production.yml",
             "type": "registry:file",
             "target": "~/.github/workflows/deploy-production.yml"
           },
           {
-            "path": ".github/workflows/validate-production.yml",
+            "path": "ci-setup/validate-production.yml",
             "type": "registry:file",
             "target": "~/.github/workflows/validate-production.yml"
           }
