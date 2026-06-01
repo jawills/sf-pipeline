@@ -1,7 +1,7 @@
 {
     "$schema": "https://ui.shadcn.com/schema/registry.json",
     "name": "sf-pipeline",
-    "homepage": "https://github.com/1Sync-Labs/sf-pipeline",
+    "homepage": "https://github.com/jawills/sf-pipeline",
     "items": [
       {
         "name": "production-deploy",
