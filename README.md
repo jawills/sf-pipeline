@@ -12,3 +12,7 @@ Deploy salesforce metadata from a sandbox to production. This repo contains gith
 ![Deployment Summary](./media/github-action-summary.png)
 
 ## Install
+
+```
+pnpm dlx shadcn@latest add 1sync-labls/sf-pipeline
+```

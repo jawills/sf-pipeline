@@ -1,0 +1,30 @@
+{
+    "$schema": "https://ui.shadcn.com/schema/registry.json",
+    "name": "sf-pipeline",
+    "homepage": "https://github.com/1Sync-Labs/sf-pipeline",
+    "items": [
+      {
+        "name": "production-deploy",
+        "type": "registry:item",
+        "title": "Production Deploy",
+        "description": "Deploy changes from a PR to production.",
+        "files": [
+          {
+            "path": ".github/actions/incremental-deploy/action.yml",
+            "type": "registry:file",
+            "target": "~/.github/actions/incremental-deploy/action.yml"
+          },
+          {
+            "path": ".github/workflows/deploy-production.yml",
+            "type": "registry:file",
+            "target": "~/.github/workflows/deploy-production.yml"
+          },
+          {
+            "path": ".github/workflows/validate-production.yml",
+            "type": "registry:file",
+            "target": "~/.github/workflows/validate-production.yml"
+          }
+        ]
+      }
+    ]
+  }
