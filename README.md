@@ -13,6 +13,9 @@ Deploy salesforce metadata from a sandbox to production. This repo contains gith
 
 ## Install
 
+Uses npm to install
+
 ```
-pnpm dlx shadcn@latest add 1sync-labls/sf-pipeline
+npx shadcn@latest add jawills/sf-pipel
+ine/ci-setup
 ```
