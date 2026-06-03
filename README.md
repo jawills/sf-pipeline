@@ -16,6 +16,5 @@ Deploy salesforce metadata from a sandbox to production. This repo contains gith
 Uses npm to install
 
 ```
-npx shadcn@latest add jawills/sf-pipel
-ine/ci-setup
+npx shadcn@latest add jawills/sf-pipeline/delta-ci-setup
 ```

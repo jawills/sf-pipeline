@@ -4,25 +4,30 @@
     "homepage": "https://github.com/jawills/sf-pipeline",
     "items": [
       {
-        "name": "ci-setup",
+        "name": "delta-ci-setup",
         "type": "registry:item",
         "title": "Production Deploy",
         "description": "Deploy changes from a PR to production.",
         "files": [
           {
-            "path": "ci-setup/incremental-deploy/action.yml",
+            "path": "delta-ci-setup/incremental-deploy/action.yml",
             "type": "registry:file",
             "target": "~/.github/actions/incremental-deploy/action.yml"
           },
           {
-            "path": "ci-setup/deploy-production.yml",
+            "path": "delta-ci-setup/deploy-production.yml",
             "type": "registry:file",
             "target": "~/.github/workflows/deploy-production.yml"
           },
           {
-            "path": "ci-setup/validate-production.yml",
+            "path": "delta-ci-setup/validate-production.yml",
             "type": "registry:file",
             "target": "~/.github/workflows/validate-production.yml"
+          },
+          {
+            "path": "delta-ci-setup/sf-deploy-summarize.sh",
+            "type": "registry:file",
+            "target": "~/.github/scripts/sf-deploy-summarize.sh"
           }
         ]
       }
