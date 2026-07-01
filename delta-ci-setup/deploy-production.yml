@@ -23,7 +23,7 @@ jobs:
           fetch-depth: 0
 
       # Node 22.23.0+ breaks SF CLI (node-fetch / jsforce); see forcedotcom/cli#3586
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: "22.22.3"
 
