@@ -11,6 +11,7 @@ on:
 
 permissions:
   contents: read
+  pull-requests: write # sticky PR comment with deploy results
 
 jobs:
   merge_job:
@@ -75,11 +76,6 @@ jobs:
           set -euo pipefail
           test -f deltas/package/package.xml || { echo "::error::Missing deltas/package/package.xml after SGD. Cannot deploy delta."; exit 1; }
 
-      - name: Deploy summary (empty delta)
-        if: steps.delta.outputs.empty_delta == 'true'
-        run: |
-          bash .github/scripts/sf-deploy-summarize.sh deploy "${{ vars.ENVIRONMENT_NAME }}" deltas ""
-
       - name: Deploy delta to ${{ vars.ENVIRONMENT_NAME }}
         id: production-deploy
         if: steps.delta.outputs.empty_delta != 'true'
@@ -91,16 +87,18 @@ jobs:
           MANIFEST_PATH: deltas/package/package.xml
           POST_DESTRUCTIVE_CHANGES: ${{ steps.delta.outputs.destructive_path }}
 
-      - name: Deploy summary (result)
-        if: always() && steps.delta.outputs.empty_delta == 'false'
+      - name: Deploy summary
+        if: always() && steps.delta.outcome == 'success'
         run: |
-          if [ -f resume-result.json ]; then
-            bash .github/scripts/sf-deploy-summarize.sh deploy "${{ vars.ENVIRONMENT_NAME }}" deltas resume-result.json
-          else
-            echo "## Salesforce deploy — ${{ vars.ENVIRONMENT_NAME }}" >> "$GITHUB_STEP_SUMMARY"
-            echo "" >> "$GITHUB_STEP_SUMMARY"
-            echo "_No resume-result.json (deploy step may have failed before writing output)._" >> "$GITHUB_STEP_SUMMARY"
-          fi
+          bash .github/scripts/sf-deploy-summarize.sh deploy "${{ vars.ENVIRONMENT_NAME }}" deltas resume-result.json pr-comment.md
+
+      - name: Comment deploy results on PR
+        if: always() && hashFiles('pr-comment.md') != ''
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          bash .github/scripts/sf-pr-comment.sh "${{ github.event.pull_request.number }}" "sf-pipeline:deploy" pr-comment.md
 
   close_job:
     if: github.event.pull_request.merged == false
