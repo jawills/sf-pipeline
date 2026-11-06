@@ -28,6 +28,11 @@
             "path": "delta-ci-setup/sf-deploy-summarize.sh",
             "type": "registry:file",
             "target": "~/.github/scripts/sf-deploy-summarize.sh"
+          },
+          {
+            "path": "delta-ci-setup/sf-pr-comment.sh",
+            "type": "registry:file",
+            "target": "~/.github/scripts/sf-pr-comment.sh"
           }
         ]
       }
